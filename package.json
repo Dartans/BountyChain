@@ -1,0 +1,16 @@
+{
+    "name": "github-issue-bounty",
+    "version": "1.0.0",
+    "description": "Smart contract for managing bounties on GitHub issues",
+    "main": "hardhat.config.js",
+    "scripts": {
+      "compile": "npx hardhat compile",
+      "deploy": "npx hardhat run scripts/deploy.js --network <network-name>"
+    },
+    "dependencies": {
+      "@nomiclabs/hardhat-waffle": "^2.0.0",
+      "ethers": "^5.0.0",
+      "hardhat": "^2.0.0"
+    }
+  }
+  
