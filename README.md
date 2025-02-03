@@ -20,19 +20,19 @@ Clone the repository:
 ```sh
 git clone https://github.com/your-username/github-issue-bounty.git
 cd github-issue-bounty
-
+```
 Install dependencies:
 ```sh
 npm install
-
+```
 Compile the contract:
 ```sh
 npx hardhat compile
-
+```
 Deploy the contract:
 ```sh
 npx hardhat run scripts/deploy.js --network <network-name>
-
+```
 # GitHub Issue Bounty Smart Contract
 
 ## Overview
