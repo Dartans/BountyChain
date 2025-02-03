@@ -62,6 +62,7 @@ This smart contract enables a decentralized bounty system for unresolved GitHub 
    - If conditions are met, the funds are released to the submitter.
 
 ## Deployment & Usage
+
 ### Deploying the Contract
 1. Compile and deploy the contract using Remix or Hardhat.
 2. Set the owner (deployer) who can manage maintainers.
@@ -106,9 +107,6 @@ Each `issue-XXX.json` file should contain:
 - The contract relies on structured files in the repository to verify fixes.
 - Only valid issue URLs should be used to prevent malicious claims.
 - Ensure wallet addresses in the `bountyboard/` files are correct before submitting claims.
-
-## License
-This project is licensed under the MIT License.
 
 ## License
 This project is licensed under the MIT License.
