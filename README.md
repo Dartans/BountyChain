@@ -1,3 +1,5 @@
+
+
 # GitHub Issue Bounty Smart Contract
 
 This smart contract allows users to post bounties on GitHub issues, which can then be approved, claimed, and managed by maintainers.
@@ -110,3 +112,5 @@ Each `issue-XXX.json` file should contain:
 
 ## License
 This project is licensed under the MIT License.
+
+![alt text](https://github.com/Dartans/BountyChain/blob/main/BountyChain.jpg)
