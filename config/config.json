@@ -1,0 +1,12 @@
+{
+    "programId": "BOUNTYBOARDCHAINPROGRAMID",
+    "network": "https://api.mainnet-beta.solana.com",
+    "token": {
+      "mint": "TOKENMINTADDRESS",
+      "decimals": 6
+    },
+    "github": {
+      "repo": "https://github.com/yourorg/yourrepo",
+      "webhookSecret": "GITHUB_WEBHOOK_SECRET"
+    }
+  }

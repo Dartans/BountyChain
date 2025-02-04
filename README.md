@@ -1,37 +1,81 @@
-# GitHub Issue Bounty Smart Contract
+# Bounty Board Chain
 
-This smart contract allows users to post bounties on GitHub issues, which can then be approved, claimed, and managed by maintainers.
+## Overview
+Bounty Board Chain is a Solana-based smart contract ecosystem that facilitates transparent and trustless bounty management using Anchor. It allows developers to create, claim, and process bounties while ensuring secure fund allocation through escrow and decentralized governance.
 
 ## Features
-- Post, increase, approve, and claim bounties
-- Close issues and track maintainer files
-- Add and remove maintainers
+- **Auto-Approval for Verified Contributors**: Developers with successful claims bypass manual approval.
+- **Escrow-Based Bounty Funding**: Ensures payout integrity.
+- **Token-Based Governance**: Tokens act as voting shares.
+- **Minimal Maintainer Involvement**: GitHub-based automation.
+- **Public Auditability**: Blockchain-verified transactions.
 
-## Getting Started
-To deploy and interact with the contract, follow these steps:
+## File Structure
+```
+bounty-board-chain/
+├── app/
+│   ├── public/
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── webhook.ts
+│   │   ├── components/
+│   │   │   └── BountyList.tsx
+│   │   ├── contexts/
+│   │   │   └── SolanaProvider.tsx
+│   │   └── App.tsx
+├── programs/
+│   └── bounty-board/
+│       ├── src/
+│       │   ├── lib.rs
+│       │   ├── instructions/
+│       │   │   ├── create_bounty.rs
+│       │   │   ├── claim_bounty.rs
+│       │   │   └── process_payout.rs
+│       │   └── state.rs
+│       ├── tests/
+│       └── target/
+├── migrations/
+│   └── deploy.ts
+├── .env
+├── .gitignore
+├── anchor.toml
+├── package.json
+└── tsconfig.json
+```
 
-1. Clone the repository
-2. Install dependencies
-3. Compile and deploy the contract
-4. Interact with the contract using a web3 provider
+## Smart Contract Implementation
+### State Definitions
+Located in `programs/bounty-board/src/state.rs`:
+- `BountyBoard`: Manages bounties and payouts.
+- `Bounty`: Represents an individual bounty.
+- `BountyStatus`: Enum for tracking bounty lifecycle.
 
-## Installation
-Clone the repository:
-```sh
-git clone https://github.com/your-username/github-issue-bounty.git
-cd github-issue-bounty
+### Core Instructions
+#### 1. Create Bounty (`create_bounty.rs`)
+Handles escrow deposits and bounty creation.
+#### 2. Process Payout (`process_payout.rs`)
+Splits payouts securely among developers, public pools, and maintainers.
 
-Install dependencies:
-```sh
-npm install
+## Frontend Integration
+Implemented in `app/src/components/BountyList.tsx`. Fetches bounty data via Solana RPC and listens for on-chain events.
 
-Compile the contract:
-```sh
-npx hardhat compile
+## Deployment Guide
+### Install Dependencies
+```bash
+yarn add @project-serum/anchor @solana/web3.js @solana/wallet-adapter-react
+```
+### Build & Deploy
+```bash
+anchor build
+anchor deploy
+```
+### Initialize Board
+```bash
+ts-node migrations/deploy.ts
+```
 
-Deploy the contract:
-```sh
-npx hardhat run scripts/deploy.js --network <network-name>
-
-## License
-This project is licensed under the MIT License.
+## Security & Best Practices
+- **Anchor PDA-based Account Management**
+- **Checked Arithmetic for Overflow Protection**
+- **Secure Token Transfers via CPI**
+- **WebSocket-Based Real-Time Updates**

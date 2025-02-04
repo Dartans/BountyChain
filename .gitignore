@@ -1,3 +1,15 @@
+# Dependencies
 node_modules/
-*.env
-*.log
+target/
+dist/
+
+# Environment files
+.env
+.env.local
+.keys/
+
+# Anchor IDL
+app/src/idl/
+
+# OS files
+.DS_Store

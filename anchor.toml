@@ -1,0 +1,10 @@
+[provider]
+cluster = "mainnet-beta"
+wallet = "~/.config/solana/id.json"
+
+[programs.mainnet]
+bounty_board = "BOUNTYBOARDCHAINPROGRAMID"
+
+[scripts]
+test = "yarn run mocha -t 1000000"
+deploy = "./scripts/deploy.sh"
