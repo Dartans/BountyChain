@@ -1,4 +1,4 @@
-
+This project is under active development. see development plan file for full overview.
 
 # GitHub Issue Bounty Smart Contract
 
