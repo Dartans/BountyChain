@@ -1,0 +1,205 @@
+BountyBoardChain - Development Plan
+
+Overview
+
+BountyBoardChain is a decentralized bounty system that integrates GitHub and Solana smart contracts to automate bounty management, ensure transparency, and allow contributors to fund, claim, and vote on bounties using a project-specific token system.
+
+Project Goals
+
+Decentralized Bounty Management: Automate issue-based funding and rewards using smart contracts.
+
+Minimal Maintainer Involvement: Maintainers only handle initial setup; GitHub’s tools manage verification.
+
+Public Auditability: Transactions are stored on-chain and displayed on the bounty board for self-auditing.
+
+Sustainable Token Economy: Tokens act as voting shares, and buyback reserves are escrowed for stability.
+
+
+
+---
+
+1. Setup & Deployment
+
+A. Initial Project Setup
+
+1. Merge the BountyBoard repository into the project while maintaining the folder structure.
+
+
+2. Sync the project with the local client.
+
+
+3. Copy the configuration file out of the sync directory and update the settings file to point to it.
+
+
+4. Add the settings file to .gitignore to prevent syncing.
+
+
+
+B. Configuration
+
+1. Set up the configuration file with:
+
+Project Wallet: Used for bounty funding.
+
+Signing Wallet: Used for approving bounties.
+
+GitHub Repository URL: Links the project to the bounty system.
+
+
+
+2. Fund the Project Wallet to enable bounty issuance.
+
+
+
+C. Deployment
+
+1. Run the deployment script to initialize the project on Solana.
+
+
+
+
+---
+
+2. Smart Contract Functions
+
+A. Bounty Management
+
+New Bounty
+
+Inputs: Amount, GitHub Issue URL
+
+Action:
+
+Creates a bounty tied to a GitHub issue.
+
+Funds are locked in escrow until the bounty is completed.
+
+
+
+Auto-Approval for Verified Contributors
+
+Developers with previous successful claims bypass manual approval.
+
+
+Claim Bounty
+
+Inputs: Approved Wallet Address
+
+Action:
+
+Approved developer claims payout after pull request verification.
+
+
+
+B. Payout Verification (Automated)
+
+Before payout, the smart contract verifies:
+✔ The GitHub repository exists.
+✔ The issue exists in the project.
+✔ The bounty timer has not expired.
+✔ The pull request was merged with a signoff containing the developer's wallet address.
+✔ Funds are available in escrow for payout.
+
+
+---
+
+3. Public Funding & Token System
+
+A. Public Funding Pool
+
+50% of all bounty funds are allocated to:
+
+Project Maintainers (50%)
+
+Public Funding Pool (50%)
+
+
+Public Funding Pool Subdivisions:
+
+50% used to underpin the token economy.
+
+50% allocated as bonus bounties, distributed via voting-based governance.
+
+Funds remain escrowed until withdrawn for bounty awards or token exchanges.
+
+
+
+Voting-Based Distribution
+
+The public pool funds bounties based on community voting.
+
+Votes are cast using project tokens, aligning funding with contributor priorities.
+
+
+B. Tokenomics & Buyback System
+
+Tokens serve as voting shares and are required for governance.
+
+Buyback Reserve Pool:
+
+Tokens can be exchanged for funds only from a separate escrowed reserve.
+
+The reserve is only replenished when a bounty is completed, ensuring long-term stability.
+
+
+
+
+---
+
+4. Frontend & Bounty Board
+
+A. Web-Based Interface
+
+Hosted on GitHub Pages.
+
+Displays open, in-progress, and completed bounties.
+
+Users can submit, claim, and vote on bounties via a Web3 wallet connection (e.g., Phantom for Solana).
+
+
+B. Public Auditability
+
+The bounty board pulls completed transactions from the blockchain, allowing self-auditing of payouts.
+
+
+
+---
+
+5. Repository Verification & Network Fees
+
+A. Template Repository & Verification Process
+
+The repo for this project will act as a template.
+
+The smart contract includes an optional verification process for ensuring a repo's deployment matches the main branch.
+
+This verification is only required on initialization of a new repo or main repo chain.
+
+A small fee is required to register a new repo, adding it to a trusted board list stored on-chain.
+
+
+B. Upstream & Downstream Bounty Processing
+
+Any trusted board that processes a bounty will have a % of fees allocated upstream based on network costs.
+
+If a repo fails verification, no upstream fees will be applied.
+
+Every successful upstream transaction generates a vote token for the downstream contract.
+
+Bounty boards will list both upstream and downstream bounties for full transparency.
+
+
+
+---
+
+Final Thoughts
+
+Key Features Implemented
+
+✅ Escrow-Based Bounty Funding to prevent fund mismanagement.
+✅ Auto-Approval for Verified Contributors to streamline claims.
+✅ Token-Based Voting & Buyback System with a separate reserve pool.
+✅ Fully Automated Bounty Verification using GitHub’s built-in tools.
+✅ Publicly Auditable Transactions for full transparency.
+
+This plan ensures a sustainable, decentralized bounty system with minimal maintainer involvement while keeping developer incentives aligned.
